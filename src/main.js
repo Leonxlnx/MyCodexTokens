@@ -18,6 +18,7 @@ const elements = {
   pathValue: document.querySelector("#pathValue"),
   modelValue: document.querySelector("#modelValue"),
   streakValue: document.querySelector("#streakValue"),
+  longestStreakValue: document.querySelector("#longestStreakValue"),
   outputPathLabel: document.querySelector("#outputPathLabel"),
   updatedAtValue: document.querySelector("#updatedAtValue"),
   todayTotal: document.querySelector("#todayTotal"),
@@ -108,6 +109,7 @@ function renderSnapshot(snapshot) {
   elements.pathValue.textContent = snapshot.imagePath;
   elements.modelValue.textContent = snapshot.insights.mostUsedModel;
   elements.streakValue.textContent = `${snapshot.insights.currentStreak} days`;
+  elements.longestStreakValue.textContent = `${snapshot.insights.longestStreak} days`;
   elements.outputPathLabel.textContent = snapshot.imagePath;
   elements.updatedAtValue.textContent = formatTimestamp(snapshot.generatedAt);
 
@@ -156,6 +158,7 @@ function applySettings(settings) {
 async function saveSettings(partialSettings) {
   const settings = await window.slopmeter.saveSettings(partialSettings);
   applySettings(settings);
+  return settings;
 }
 
 async function refreshSnapshot({ background = false } = {}) {
@@ -189,6 +192,7 @@ async function init() {
   elements.themeToggleButton.addEventListener("click", async () => {
     const nextTheme = state.settings?.theme === "dark" ? "light" : "dark";
     await saveSettings({ theme: nextTheme });
+    await refreshSnapshot();
   });
   elements.autoRefreshSelect.addEventListener("change", async () => {
     await saveSettings({ autoRefreshMinutes: Number(elements.autoRefreshSelect.value) });

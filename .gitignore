@@ -3,6 +3,10 @@ release/
 .app-stage/
 electron-smoke.err.log
 electron-smoke.out.log
+electron-smoke-*.err.log
+electron-smoke-*.out.log
+electron-light-test.err.log
+electron-light-test.out.log
 server.err.log
 server.log
 heatmap-last-year.png

@@ -179,9 +179,11 @@ function runBundledSlopmeter(args) {
 
 async function refreshSnapshot() {
   const { imagePath, jsonPath } = getOutputPaths();
+  const settings = await readSettings();
+  const themeArgs = settings.theme === "dark" ? ["--dark"] : [];
 
-  await runBundledSlopmeter(["--codex", "--dark", "--format", "json", "--output", jsonPath]);
-  await runBundledSlopmeter(["--codex", "--dark", "--output", imagePath]);
+  await runBundledSlopmeter(["--codex", ...themeArgs, "--format", "json", "--output", jsonPath]);
+  await runBundledSlopmeter(["--codex", ...themeArgs, "--output", imagePath]);
 
   const raw = await fs.readFile(jsonPath, "utf8");
   const payload = JSON.parse(raw);

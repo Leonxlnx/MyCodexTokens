@@ -1,0 +1,126 @@
+<svg width="1600" height="980" viewBox="0 0 1600 980" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1600" height="980" fill="#F5F4EF"/>
+  <rect x="56" y="56" width="1488" height="868" fill="#F5F4EF" stroke="#D4D2CA"/>
+  <rect x="56" y="56" width="1488" height="36" fill="#16181B"/>
+  <circle cx="84" cy="74" r="6" fill="#FF6E3A"/>
+  <circle cx="104" cy="74" r="6" fill="#F6BE5B"/>
+  <circle cx="124" cy="74" r="6" fill="#6DC986"/>
+  <text x="152" y="79" fill="#F5F4EF" font-family="Arial, sans-serif" font-size="18" font-weight="600">MyCodexTokens</text>
+
+  <rect x="78" y="114" width="56" height="56" fill="#F5F4EF" stroke="#121416"/>
+  <rect x="89" y="125" width="14" height="34" fill="#121416"/>
+  <rect x="112" y="125" width="14" height="34" fill="#121416"/>
+  <path d="M103 142H113L126 125H144L126 146L144 159H126L113 146H103V142Z" fill="#121416"/>
+  <rect x="125" y="148" width="12" height="8" fill="#FF6E3A"/>
+
+  <text x="152" y="126" fill="#858D96" font-family="Arial, sans-serif" font-size="18" letter-spacing="3">MY CODEX TOKEN</text>
+  <text x="152" y="173" fill="#121416" font-family="Arial, sans-serif" font-size="58" font-weight="700">Usage dashboard</text>
+
+  <rect x="1164" y="120" width="98" height="40" fill="#F5F4EF" stroke="#D4D2CA"/>
+  <text x="1195" y="145" fill="#121416" font-family="Arial, sans-serif" font-size="16">Light</text>
+  <rect x="1274" y="120" width="128" height="40" fill="#F5F4EF" stroke="#D4D2CA"/>
+  <text x="1308" y="145" fill="#121416" font-family="Arial, sans-serif" font-size="16">Downloads</text>
+  <rect x="1414" y="120" width="98" height="40" fill="#121416"/>
+  <text x="1443" y="145" fill="#F5F4EF" font-family="Arial, sans-serif" font-size="16">Refresh</text>
+
+  <rect x="56" y="200" width="1488" height="96" fill="#F5F4EF" stroke="#D4D2CA"/>
+  <line x1="353" y1="200" x2="353" y2="296" stroke="#D4D2CA"/>
+  <line x1="650" y1="200" x2="650" y2="296" stroke="#D4D2CA"/>
+  <line x1="947" y1="200" x2="947" y2="296" stroke="#D4D2CA"/>
+  <line x1="1244" y1="200" x2="1244" y2="296" stroke="#D4D2CA"/>
+
+  <text x="82" y="234" fill="#858D96" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">TODAY</text>
+  <text x="82" y="272" fill="#121416" font-family="Arial, sans-serif" font-size="28" font-weight="700">12.7M</text>
+  <text x="379" y="234" fill="#858D96" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">YESTERDAY</text>
+  <text x="379" y="272" fill="#121416" font-family="Arial, sans-serif" font-size="28" font-weight="700">278.4M</text>
+  <text x="676" y="234" fill="#858D96" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">MOST USED</text>
+  <text x="676" y="272" fill="#121416" font-family="Arial, sans-serif" font-size="28" font-weight="700">gpt-5.4</text>
+  <text x="973" y="234" fill="#858D96" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">CURRENT STREAK</text>
+  <text x="973" y="272" fill="#121416" font-family="Arial, sans-serif" font-size="28" font-weight="700">10 days</text>
+  <text x="1270" y="234" fill="#858D96" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">LONGEST STREAK</text>
+  <text x="1270" y="272" fill="#121416" font-family="Arial, sans-serif" font-size="28" font-weight="700">10 days</text>
+
+  <rect x="56" y="296" width="1488" height="628" fill="#F5F4EF" stroke="#D4D2CA"/>
+  <line x1="1140" y1="296" x2="1140" y2="924" stroke="#D4D2CA"/>
+
+  <text x="82" y="336" fill="#858D96" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">HEATMAP</text>
+  <rect x="82" y="360" width="1030" height="506" fill="#181818"/>
+  <text x="120" y="430" fill="#F5F4EF" font-family="Arial, sans-serif" font-size="54" font-weight="600">Codex</text>
+  <g fill="#2A2A2A">
+    <rect x="190" y="516" width="18" height="18" rx="4"/>
+    <rect x="214" y="516" width="18" height="18" rx="4"/>
+    <rect x="238" y="516" width="18" height="18" rx="4"/>
+    <rect x="262" y="516" width="18" height="18" rx="4"/>
+    <rect x="286" y="516" width="18" height="18" rx="4"/>
+    <rect x="310" y="516" width="18" height="18" rx="4"/>
+    <rect x="334" y="516" width="18" height="18" rx="4"/>
+    <rect x="358" y="516" width="18" height="18" rx="4"/>
+    <rect x="382" y="516" width="18" height="18" rx="4"/>
+    <rect x="406" y="516" width="18" height="18" rx="4"/>
+    <rect x="430" y="516" width="18" height="18" rx="4"/>
+    <rect x="454" y="516" width="18" height="18" rx="4"/>
+    <rect x="478" y="516" width="18" height="18" rx="4"/>
+    <rect x="502" y="516" width="18" height="18" rx="4"/>
+    <rect x="526" y="516" width="18" height="18" rx="4"/>
+    <rect x="550" y="516" width="18" height="18" rx="4"/>
+    <rect x="574" y="516" width="18" height="18" rx="4"/>
+    <rect x="598" y="516" width="18" height="18" rx="4"/>
+    <rect x="622" y="516" width="18" height="18" rx="4"/>
+    <rect x="646" y="516" width="18" height="18" rx="4"/>
+    <rect x="670" y="516" width="18" height="18" rx="4"/>
+    <rect x="694" y="516" width="18" height="18" rx="4"/>
+    <rect x="718" y="516" width="18" height="18" rx="4"/>
+    <rect x="742" y="516" width="18" height="18" rx="4"/>
+    <rect x="766" y="516" width="18" height="18" rx="4"/>
+    <rect x="790" y="516" width="18" height="18" rx="4"/>
+    <rect x="814" y="516" width="18" height="18" rx="4"/>
+    <rect x="838" y="516" width="18" height="18" rx="4"/>
+    <rect x="862" y="516" width="18" height="18" rx="4"/>
+    <rect x="886" y="516" width="18" height="18" rx="4"/>
+    <rect x="910" y="516" width="18" height="18" rx="4"/>
+    <rect x="934" y="516" width="18" height="18" rx="4"/>
+    <rect x="958" y="516" width="18" height="18" rx="4"/>
+    <rect x="982" y="516" width="18" height="18" rx="4"/>
+    <rect x="1006" y="516" width="18" height="18" rx="4"/>
+  </g>
+  <g fill="#4A44D4">
+    <rect x="964" y="604" width="18" height="18" rx="4"/>
+    <rect x="1012" y="556" width="18" height="18" rx="4"/>
+    <rect x="1036" y="532" width="18" height="18" rx="4"/>
+    <rect x="1036" y="556" width="18" height="18" rx="4"/>
+    <rect x="1036" y="580" width="18" height="18" rx="4"/>
+    <rect x="1012" y="628" width="18" height="18" rx="4"/>
+  </g>
+  <g fill="#BCC6FF">
+    <rect x="1036" y="604" width="18" height="18" rx="4"/>
+  </g>
+  <text x="120" y="812" fill="#F5F4EF" font-family="Arial, sans-serif" font-size="22">MOST USED MODEL</text>
+  <text x="120" y="848" fill="#F5F4EF" font-family="Arial, sans-serif" font-size="46" font-weight="700">gpt-5.4</text>
+  <text x="474" y="812" fill="#F5F4EF" font-family="Arial, sans-serif" font-size="22">RECENT USE</text>
+  <text x="474" y="848" fill="#F5F4EF" font-family="Arial, sans-serif" font-size="46" font-weight="700">gpt-5.4</text>
+  <text x="834" y="812" fill="#F5F4EF" font-family="Arial, sans-serif" font-size="22">LONGEST STREAK</text>
+  <text x="876" y="848" fill="#F5F4EF" font-family="Arial, sans-serif" font-size="46" font-weight="700">10 days</text>
+
+  <text x="1166" y="336" fill="#858D96" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">DAILY SPLIT</text>
+  <rect x="1166" y="362" width="352" height="220" fill="#F9F8F4" stroke="#D4D2CA"/>
+  <text x="1190" y="392" fill="#858D96" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">TODAY</text>
+  <text x="1400" y="392" fill="#121416" font-family="Arial, sans-serif" font-size="16">9 Apr 2026</text>
+  <line x1="1190" y1="416" x2="1492" y2="416" stroke="#E4E1D9"/>
+  <text x="1190" y="452" fill="#858D96" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">INPUT</text>
+  <text x="1408" y="452" fill="#121416" font-family="Arial, sans-serif" font-size="16">12,669,131</text>
+  <text x="1190" y="496" fill="#858D96" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">OUTPUT</text>
+  <text x="1442" y="496" fill="#121416" font-family="Arial, sans-serif" font-size="16">56,629</text>
+  <text x="1190" y="540" fill="#858D96" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">CACHED</text>
+  <text x="1400" y="540" fill="#121416" font-family="Arial, sans-serif" font-size="16">11,911,040</text>
+
+  <rect x="1166" y="604" width="352" height="220" fill="#F9F8F4" stroke="#D4D2CA"/>
+  <text x="1190" y="634" fill="#858D96" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">YESTERDAY</text>
+  <text x="1388" y="634" fill="#121416" font-family="Arial, sans-serif" font-size="16">8 Apr 2026</text>
+  <line x1="1190" y1="658" x2="1492" y2="658" stroke="#E4E1D9"/>
+  <text x="1190" y="694" fill="#858D96" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">INPUT</text>
+  <text x="1398" y="694" fill="#121416" font-family="Arial, sans-serif" font-size="16">276,832,332</text>
+  <text x="1190" y="738" fill="#858D96" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">OUTPUT</text>
+  <text x="1408" y="738" fill="#121416" font-family="Arial, sans-serif" font-size="16">1,571,270</text>
+  <text x="1190" y="782" fill="#858D96" font-family="Arial, sans-serif" font-size="16" letter-spacing="3">CACHED</text>
+  <text x="1398" y="782" fill="#121416" font-family="Arial, sans-serif" font-size="16">255,757,184</text>
+</svg>

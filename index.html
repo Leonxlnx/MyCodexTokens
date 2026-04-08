@@ -19,10 +19,10 @@
     <header class="masthead">
       <div class="brand-block">
         <div class="brand-lockup">
-          <img class="brand-mark" src="assets/icon.png" alt="MyCodexTokens logo" width="48" height="48">
+          <img class="brand-mark" src="assets/icon.png" alt="MyCodexTokens logo" width="56" height="56">
           <div class="brand-copy">
-            <p class="product-name">MyCodexTokens</p>
-            <h1>Codex usage.</h1>
+            <p class="product-name">My Codex Token</p>
+            <h1>Usage dashboard</h1>
           </div>
         </div>
 
@@ -78,6 +78,11 @@
         <span class="metric__label">Current Streak</span>
         <strong id="streakValue">0 days</strong>
       </article>
+
+      <article class="metric">
+        <span class="metric__label">Longest Streak</span>
+        <strong id="longestStreakValue">0 days</strong>
+      </article>
     </section>
 
     <main class="workspace">
@@ -102,10 +107,10 @@
             <p class="section-kicker">Daily Split</p>
           </div>
 
-          <div class="detail-group">
-            <div class="detail-group__head">
-              <p class="detail-group__title">Today</p>
-              <p id="todayDate" class="detail-group__date">Waiting</p>
+          <div class="detail-card">
+            <div class="detail-card__head">
+              <p class="detail-card__title">Today</p>
+              <p id="todayDate" class="detail-card__date">Waiting</p>
             </div>
 
             <dl class="dense-list">
@@ -124,12 +129,10 @@
             </dl>
           </div>
 
-          <div class="detail-divider" aria-hidden="true"></div>
-
-          <div class="detail-group">
-            <div class="detail-group__head">
-              <p class="detail-group__title">Yesterday</p>
-              <p id="yesterdayDate" class="detail-group__date">Waiting</p>
+          <div class="detail-card">
+            <div class="detail-card__head">
+              <p class="detail-card__title">Yesterday</p>
+              <p id="yesterdayDate" class="detail-card__date">Waiting</p>
             </div>
 
             <dl class="dense-list">

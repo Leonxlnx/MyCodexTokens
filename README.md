@@ -1,20 +1,56 @@
 # MyCodexTokens
 
-MyCodexTokens is a small Electron desktop app that wraps `slopmeter` in a denser, cleaner UI. It gives you a flat Swiss-style dashboard, light and dark themes, and one-click refresh/export into your Downloads folder.
+<p align="center">
+  <img src="assets/icon.png" alt="MyCodexTokens logo" width="96" height="96">
+</p>
 
-## What It Does
+<p align="center">
+  A clean desktop wrapper for <a href="https://github.com/JeanMeijer/slopmeter">slopmeter</a> that keeps Codex usage visible without living in the terminal.
+</p>
 
-- Runs `slopmeter` locally for `Codex`
-- Saves the latest PNG and JSON into your Downloads folder
-- Shows today and yesterday totals with input, output, and cached input
-- Supports manual refresh plus auto-refresh while the app stays open
+<p align="center">
+  <img src="assets/readme-preview.svg" alt="MyCodexTokens interface preview">
+</p>
 
-## Local Development
+## Overview
+
+MyCodexTokens is a lightweight Electron app for people who use Codex heavily and want a cleaner way to check token activity.
+
+It runs `slopmeter` locally, saves the latest export into your Downloads folder, and presents the result in a flat desktop UI with theme-aware heatmaps, quick refresh controls, and a clearer daily split.
+
+## Highlights
+
+- One-click refresh for the latest Codex heatmap
+- Light and dark application themes
+- Light mode also regenerates a light `slopmeter` image
+- Daily split with focused `Today` and `Yesterday` sections
+- Current streak and longest streak at a glance
+- Local exports saved straight into Downloads
+
+## Requirements
+
+- [Node.js 22+](https://nodejs.org/)
+- Codex usage data already available on the machine
+- A system that can run Electron, including Windows and macOS
+
+## Getting Started
 
 ```bash
 npm install
 npm start
 ```
+
+The app will refresh automatically on launch and save two files in your Downloads folder:
+
+- `mycodextokens-codex-heatmap.png`
+- `mycodextokens-codex-usage.json`
+
+## Usage Notes
+
+- Use `Refresh` whenever you want a new snapshot immediately.
+- Change the theme with the theme button. The next refresh will regenerate the heatmap in the matching color mode.
+- Use `Downloads` to jump to the exported files quickly.
+- Use `Open PNG` to open the latest rendered heatmap directly.
 
 ## Packaging
 
@@ -23,15 +59,25 @@ npm run package:win
 npm run package:mac
 ```
 
-The packaging scripts raise the Node heap size to reduce Electron Builder memory failures during packaging.
+The packaging flow stages a minimal app directory first and increases the Node heap size to reduce Electron Builder memory issues.
 
-## Output Files
+## Project Structure
 
-The app overwrites these files in your Downloads folder:
+```text
+assets/      Icons and README preview assets
+electron/    Electron main and preload processes
+scripts/     Build staging helpers
+src/         Renderer logic and styles
+index.html   Main application shell
+```
 
-- `mycodextokens-codex-heatmap.png`
-- `mycodextokens-codex-usage.json`
+## Tips
 
-## Notes
+- Keep Codex open long enough for its local usage data to settle before refreshing.
+- If the PNG looks out of date, run another refresh instead of relying on an old export.
+- If you switch from dark to light mode, wait for the refresh to finish so the image and UI match.
 
-- The app bundles `slopmeter`, so it does not rely on a global `npx`
+## Credits
+
+- Heatmap generation by [slopmeter](https://github.com/JeanMeijer/slopmeter)
+- Desktop shell powered by [Electron](https://www.electronjs.org/)
