@@ -12,8 +12,7 @@ const elements = {
   autoRefreshSelect: document.querySelector("#autoRefreshSelect"),
   openImageButton: document.querySelector("#openImageButton"),
   showDownloadsButton: document.querySelector("#showDownloadsButton"),
-  statusPill: document.querySelector("#statusPill"),
-  statusText: document.querySelector("#statusText"),
+  statusBadge: document.querySelector("#statusBadge"),
   providerValue: document.querySelector("#providerValue"),
   rangeValue: document.querySelector("#rangeValue"),
   pathValue: document.querySelector("#pathValue"),
@@ -21,17 +20,13 @@ const elements = {
   streakValue: document.querySelector("#streakValue"),
   outputPathLabel: document.querySelector("#outputPathLabel"),
   updatedAtValue: document.querySelector("#updatedAtValue"),
-  recentModelValue: document.querySelector("#recentModelValue"),
-  longestStreakValue: document.querySelector("#longestStreakValue"),
   todayTotal: document.querySelector("#todayTotal"),
   todayDate: document.querySelector("#todayDate"),
-  todayMeta: document.querySelector("#todayMeta"),
   todayInput: document.querySelector("#todayInput"),
   todayOutput: document.querySelector("#todayOutput"),
   todayCache: document.querySelector("#todayCache"),
   yesterdayTotal: document.querySelector("#yesterdayTotal"),
   yesterdayDate: document.querySelector("#yesterdayDate"),
-  yesterdayMeta: document.querySelector("#yesterdayMeta"),
   yesterdayInput: document.querySelector("#yesterdayInput"),
   yesterdayOutput: document.querySelector("#yesterdayOutput"),
   yesterdayCache: document.querySelector("#yesterdayCache"),
@@ -75,17 +70,16 @@ function formatTimestamp(value) {
   return timeFormatter.format(new Date(value));
 }
 
-function setStatus(message, tone) {
+function setStatus(tone) {
   const labels = {
     idle: "Ready",
-    loading: "Running",
+    loading: "Updating",
     success: "Fresh",
     error: "Error",
   };
 
-  elements.statusPill.dataset.state = tone;
-  elements.statusPill.textContent = labels[tone] ?? labels.idle;
-  elements.statusText.textContent = message;
+  elements.statusBadge.dataset.state = tone;
+  elements.statusBadge.textContent = labels[tone] ?? labels.idle;
 }
 
 function setBusy(isBusy) {
@@ -105,7 +99,6 @@ function renderDay(prefix, day) {
   elements[`${prefix}Input`].textContent = formatTokens(day.input);
   elements[`${prefix}Output`].textContent = formatTokens(day.output);
   elements[`${prefix}Cache`].textContent = formatTokens(day.cache?.input ?? 0);
-  elements[`${prefix}Meta`].textContent = `${formatDate(day.date)} | ${formatTokens(day.input)} in | ${formatTokens(day.output)} out | ${formatTokens(day.cache?.input ?? 0)} cache`;
 }
 
 function renderSnapshot(snapshot) {
@@ -117,8 +110,6 @@ function renderSnapshot(snapshot) {
   elements.streakValue.textContent = `${snapshot.insights.currentStreak} days`;
   elements.outputPathLabel.textContent = snapshot.imagePath;
   elements.updatedAtValue.textContent = formatTimestamp(snapshot.generatedAt);
-  elements.recentModelValue.textContent = `Recent: ${snapshot.insights.recentMostUsedModel}`;
-  elements.longestStreakValue.textContent = `Longest: ${snapshot.insights.longestStreak} days`;
 
   renderDay("today", snapshot.today);
   renderDay("yesterday", snapshot.yesterday);
@@ -173,10 +164,7 @@ async function refreshSnapshot({ background = false } = {}) {
   }
 
   setBusy(true);
-  setStatus(
-    background ? "Auto-refresh is rebuilding the latest export." : "Running slopmeter and updating Downloads.",
-    "loading"
-  );
+  setStatus("loading");
 
   try {
     const snapshot = await window.slopmeter.refresh();
@@ -186,9 +174,9 @@ async function refreshSnapshot({ background = false } = {}) {
       imageExists: true,
     };
     updateActionAvailability();
-    setStatus(`Fresh snapshot saved at ${formatTimestamp(snapshot.generatedAt)}.`, "success");
-  } catch (error) {
-    setStatus(error?.message ?? "slopmeter failed to refresh.", "error");
+    setStatus("success");
+  } catch {
+    setStatus("error");
   } finally {
     setBusy(false);
   }
@@ -224,6 +212,7 @@ async function init() {
   const existingSnapshot = await window.slopmeter.getLatestSnapshot();
   if (existingSnapshot) {
     renderSnapshot(existingSnapshot);
+    setStatus("success");
   }
 
   await refreshSnapshot();

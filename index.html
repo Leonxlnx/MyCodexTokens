@@ -22,69 +22,61 @@
           <img class="brand-mark" src="assets/icon.png" alt="MyCodexTokens logo" width="48" height="48">
           <div class="brand-copy">
             <p class="product-name">MyCodexTokens</p>
-            <h1>Codex usage, flat and in view.</h1>
+            <h1>Codex usage.</h1>
           </div>
         </div>
 
-        <p id="pathValue" class="brand-path">Preparing output path</p>
+        <div class="brand-rail">
+          <p id="pathValue" class="brand-path">Preparing output path</p>
+          <span id="statusBadge" class="toolbar-status" data-state="idle">Ready</span>
+        </div>
       </div>
 
-      <div class="toolbar">
-        <label class="toolbar__field" for="autoRefreshSelect">
-          <span>Auto</span>
-          <select id="autoRefreshSelect">
-            <option value="0">Manual</option>
-            <option value="15">15 min</option>
-            <option value="30">30 min</option>
-            <option value="60">60 min</option>
-          </select>
-        </label>
+      <div class="toolbar-block">
+        <div class="toolbar-meta">
+          <span id="providerValue">Codex</span>
+          <span id="rangeValue">Waiting for range</span>
+          <span id="updatedAtValue">Waiting</span>
+        </div>
 
-        <button id="themeToggleButton" class="button" type="button">Light</button>
-        <button id="showDownloadsButton" class="button" type="button">Downloads</button>
-        <button id="openImageButton" class="button" type="button">Open PNG</button>
-        <button id="refreshButton" class="button button--solid" type="button">Refresh</button>
+        <div class="toolbar">
+          <label class="toolbar__field" for="autoRefreshSelect">
+            <span>Auto</span>
+            <select id="autoRefreshSelect">
+              <option value="0">Manual</option>
+              <option value="15">15 min</option>
+              <option value="30">30 min</option>
+              <option value="60">60 min</option>
+            </select>
+          </label>
+
+          <button id="themeToggleButton" class="button" type="button">Light</button>
+          <button id="showDownloadsButton" class="button" type="button">Downloads</button>
+          <button id="openImageButton" class="button" type="button">Open PNG</button>
+          <button id="refreshButton" class="button button--solid" type="button">Refresh</button>
+        </div>
       </div>
     </header>
-
-    <section class="status-row">
-      <div class="status-row__state">
-        <span id="statusPill" class="status-pill" data-state="idle">Ready</span>
-        <p id="statusText" class="status-text">
-          Refresh once and MyCodexTokens will keep replacing the latest dark export inside Downloads.
-        </p>
-      </div>
-
-      <div class="status-row__meta">
-        <span id="providerValue">Codex</span>
-        <span id="rangeValue">Waiting for range</span>
-        <span id="updatedAtValue">Waiting</span>
-      </div>
-    </section>
 
     <section class="metric-strip">
       <article class="metric">
         <span class="metric__label">Today</span>
         <strong id="todayTotal">0</strong>
-        <p id="todayMeta" class="metric__meta">No snapshot yet</p>
       </article>
 
       <article class="metric">
         <span class="metric__label">Yesterday</span>
         <strong id="yesterdayTotal">0</strong>
-        <p id="yesterdayMeta" class="metric__meta">No snapshot yet</p>
       </article>
 
       <article class="metric">
         <span class="metric__label">Most Used</span>
         <strong id="modelValue">Waiting</strong>
-        <p id="recentModelValue" class="metric__meta">Recent: Waiting</p>
       </article>
 
       <article class="metric">
         <span class="metric__label">Current Streak</span>
         <strong id="streakValue">0 days</strong>
-        <p id="longestStreakValue" class="metric__meta">Longest: 0 days</p>
       </article>
     </section>
 
@@ -110,40 +102,51 @@
             <p class="section-kicker">Daily Split</p>
           </div>
 
-          <dl class="dense-list">
-            <div>
-              <dt>Today Date</dt>
-              <dd id="todayDate">Waiting</dd>
+          <div class="detail-group">
+            <div class="detail-group__head">
+              <p class="detail-group__title">Today</p>
+              <p id="todayDate" class="detail-group__date">Waiting</p>
             </div>
-            <div>
-              <dt>Today Input</dt>
-              <dd id="todayInput">0</dd>
+
+            <dl class="dense-list">
+              <div>
+                <dt>Input</dt>
+                <dd id="todayInput">0</dd>
+              </div>
+              <div>
+                <dt>Output</dt>
+                <dd id="todayOutput">0</dd>
+              </div>
+              <div>
+                <dt>Cached</dt>
+                <dd id="todayCache">0</dd>
+              </div>
+            </dl>
+          </div>
+
+          <div class="detail-divider" aria-hidden="true"></div>
+
+          <div class="detail-group">
+            <div class="detail-group__head">
+              <p class="detail-group__title">Yesterday</p>
+              <p id="yesterdayDate" class="detail-group__date">Waiting</p>
             </div>
-            <div>
-              <dt>Today Output</dt>
-              <dd id="todayOutput">0</dd>
-            </div>
-            <div>
-              <dt>Today Cached</dt>
-              <dd id="todayCache">0</dd>
-            </div>
-            <div>
-              <dt>Yesterday Date</dt>
-              <dd id="yesterdayDate">Waiting</dd>
-            </div>
-            <div>
-              <dt>Yesterday Input</dt>
-              <dd id="yesterdayInput">0</dd>
-            </div>
-            <div>
-              <dt>Yesterday Output</dt>
-              <dd id="yesterdayOutput">0</dd>
-            </div>
-            <div>
-              <dt>Yesterday Cached</dt>
-              <dd id="yesterdayCache">0</dd>
-            </div>
-          </dl>
+
+            <dl class="dense-list">
+              <div>
+                <dt>Input</dt>
+                <dd id="yesterdayInput">0</dd>
+              </div>
+              <div>
+                <dt>Output</dt>
+                <dd id="yesterdayOutput">0</dd>
+              </div>
+              <div>
+                <dt>Cached</dt>
+                <dd id="yesterdayCache">0</dd>
+              </div>
+            </dl>
+          </div>
         </section>
       </aside>
     </main>
