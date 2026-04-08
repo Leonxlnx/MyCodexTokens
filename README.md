@@ -5,11 +5,18 @@
 </p>
 
 <p align="center">
-  A clean desktop wrapper for <a href="https://github.com/JeanMeijer/slopmeter">slopmeter</a> that keeps Codex usage visible without living in the terminal.
+  A clean desktop wrapper around the <code>npx slopmeter@latest --codex</code> workflow that keeps Codex usage visible without living in the terminal.
 </p>
 
 <p align="center">
-  <img src="assets/readme-preview.svg" alt="MyCodexTokens interface preview">
+  <a href="https://github.com/JeanMeijer/slopmeter">Powered by slopmeter</a> ·
+  <a href="#getting-started">Getting Started</a> ·
+  <a href="#usage-notes">Usage</a> ·
+  <a href="#credits">Credits</a>
+</p>
+
+<p align="center">
+  <img src="assets/readme-screenshot.png" alt="MyCodexTokens desktop dashboard screenshot">
 </p>
 
 ## Overview
@@ -51,6 +58,7 @@ The app will refresh automatically on launch and save two files in your Download
 - Change the theme with the theme button. The next refresh will regenerate the heatmap in the matching color mode.
 - Use `Downloads` to jump to the exported files quickly.
 - Use `Open PNG` to open the latest rendered heatmap directly.
+- Make sure Codex has recent local usage data available before refreshing.
 
 ## Packaging
 
@@ -64,7 +72,7 @@ The packaging flow stages a minimal app directory first and increases the Node h
 ## Project Structure
 
 ```text
-assets/      Icons and README preview assets
+assets/      Icons and README screenshot assets
 electron/    Electron main and preload processes
 scripts/     Build staging helpers
 src/         Renderer logic and styles
@@ -77,7 +85,13 @@ index.html   Main application shell
 - If the PNG looks out of date, run another refresh instead of relying on an old export.
 - If you switch from dark to light mode, wait for the refresh to finish so the image and UI match.
 
+## Sponsor
+
+This repository includes a GitHub sponsor configuration file for `@Leonxlnx`.
+
+To make the sponsor button work end to end, enable GitHub Sponsors for the account first, complete the payout and profile setup in GitHub, and keep the repository funding file pointed at the same username.
+
 ## Credits
 
-- Heatmap generation by [slopmeter](https://github.com/JeanMeijer/slopmeter)
+- Heatmap generation powered by [slopmeter](https://github.com/JeanMeijer/slopmeter), created by [Jean P.D. Meijer](https://github.com/JeanMeijer)
 - Desktop shell powered by [Electron](https://www.electronjs.org/)
