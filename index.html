@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'self'; img-src 'self' file: data:; style-src 'self'; script-src 'self';"
+  >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>MyCodexTokens</title>
+  <meta
+    name="description"
+    content="MyCodexTokens is a clean desktop wrapper for slopmeter with light and dark themes and a flat Swiss-style layout."
+  >
+  <link rel="stylesheet" href="src/style.css">
+</head>
+<body>
+  <div class="shell">
+    <header class="masthead">
+      <div class="brand-block">
+        <div class="brand-lockup">
+          <img class="brand-mark" src="assets/icon.png" alt="MyCodexTokens logo" width="48" height="48">
+          <div class="brand-copy">
+            <p class="product-name">MyCodexTokens</p>
+            <h1>Codex usage, flat and in view.</h1>
+          </div>
+        </div>
+
+        <p id="pathValue" class="brand-path">Preparing output path</p>
+      </div>
+
+      <div class="toolbar">
+        <label class="toolbar__field" for="autoRefreshSelect">
+          <span>Auto</span>
+          <select id="autoRefreshSelect">
+            <option value="0">Manual</option>
+            <option value="15">15 min</option>
+            <option value="30">30 min</option>
+            <option value="60">60 min</option>
+          </select>
+        </label>
+
+        <button id="themeToggleButton" class="button" type="button">Light</button>
+        <button id="showDownloadsButton" class="button" type="button">Downloads</button>
+        <button id="openImageButton" class="button" type="button">Open PNG</button>
+        <button id="refreshButton" class="button button--solid" type="button">Refresh</button>
+      </div>
+    </header>
+
+    <section class="status-row">
+      <div class="status-row__state">
+        <span id="statusPill" class="status-pill" data-state="idle">Ready</span>
+        <p id="statusText" class="status-text">
+          Refresh once and MyCodexTokens will keep replacing the latest dark export inside Downloads.
+        </p>
+      </div>
+
+      <div class="status-row__meta">
+        <span id="providerValue">Codex</span>
+        <span id="rangeValue">Waiting for range</span>
+        <span id="updatedAtValue">Waiting</span>
+      </div>
+    </section>
+
+    <section class="metric-strip">
+      <article class="metric">
+        <span class="metric__label">Today</span>
+        <strong id="todayTotal">0</strong>
+        <p id="todayMeta" class="metric__meta">No snapshot yet</p>
+      </article>
+
+      <article class="metric">
+        <span class="metric__label">Yesterday</span>
+        <strong id="yesterdayTotal">0</strong>
+        <p id="yesterdayMeta" class="metric__meta">No snapshot yet</p>
+      </article>
+
+      <article class="metric">
+        <span class="metric__label">Most Used</span>
+        <strong id="modelValue">Waiting</strong>
+        <p id="recentModelValue" class="metric__meta">Recent: Waiting</p>
+      </article>
+
+      <article class="metric">
+        <span class="metric__label">Current Streak</span>
+        <strong id="streakValue">0 days</strong>
+        <p id="longestStreakValue" class="metric__meta">Longest: 0 days</p>
+      </article>
+    </section>
+
+    <main class="workspace">
+      <section class="preview-column">
+        <div class="section-head">
+          <p class="section-kicker">Heatmap</p>
+          <p id="outputPathLabel" class="mono-copy">Preparing Downloads path...</p>
+        </div>
+
+        <div id="previewFrame" class="preview-frame is-empty">
+          <img id="heatmapImage" alt="The latest slopmeter heatmap preview">
+          <div id="emptyState" class="empty-state">
+            <p>No export yet.</p>
+            <span>Run one refresh and the latest PNG will appear here.</span>
+          </div>
+        </div>
+      </section>
+
+      <aside class="detail-column">
+        <section class="detail-section">
+          <div class="section-head section-head--tight">
+            <p class="section-kicker">Daily Split</p>
+          </div>
+
+          <dl class="dense-list">
+            <div>
+              <dt>Today Date</dt>
+              <dd id="todayDate">Waiting</dd>
+            </div>
+            <div>
+              <dt>Today Input</dt>
+              <dd id="todayInput">0</dd>
+            </div>
+            <div>
+              <dt>Today Output</dt>
+              <dd id="todayOutput">0</dd>
+            </div>
+            <div>
+              <dt>Today Cached</dt>
+              <dd id="todayCache">0</dd>
+            </div>
+            <div>
+              <dt>Yesterday Date</dt>
+              <dd id="yesterdayDate">Waiting</dd>
+            </div>
+            <div>
+              <dt>Yesterday Input</dt>
+              <dd id="yesterdayInput">0</dd>
+            </div>
+            <div>
+              <dt>Yesterday Output</dt>
+              <dd id="yesterdayOutput">0</dd>
+            </div>
+            <div>
+              <dt>Yesterday Cached</dt>
+              <dd id="yesterdayCache">0</dd>
+            </div>
+          </dl>
+        </section>
+      </aside>
+    </main>
+  </div>
+
+  <script src="src/main.js"></script>
+</body>
+</html>

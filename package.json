@@ -1,0 +1,59 @@
+{
+  "name": "my-codex-tokens",
+  "version": "0.1.0",
+  "description": "MyCodexTokens",
+  "main": "electron/main.js",
+  "author": "OpenAI Codex",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron .",
+    "dev": "electron .",
+    "prepare:stage": "node scripts/stage-app.js && npm --prefix .app-stage install --omit=dev --no-package-lock && node scripts/finalize-stage.js",
+    "package": "npm run prepare:stage && cross-env NODE_OPTIONS=--max-old-space-size=8192 electron-builder -c.directories.app=.app-stage",
+    "package:mac": "npm run prepare:stage && cross-env NODE_OPTIONS=--max-old-space-size=8192 electron-builder --mac dmg zip -c.directories.app=.app-stage",
+    "package:win": "npm run prepare:stage && cross-env NODE_OPTIONS=--max-old-space-size=8192 electron-builder --win nsis portable -c.directories.app=.app-stage"
+  },
+  "build": {
+    "appId": "com.codex.slopmeterdesktop",
+    "productName": "MyCodexTokens",
+    "directories": {
+      "output": "release",
+      "buildResources": "assets"
+    },
+    "artifactName": "${productName}-${version}-${os}-${arch}.${ext}",
+    "asarUnpack": [
+      "node_modules/slopmeter/**/*"
+    ],
+    "files": [
+      "electron/**/*",
+      "src/**/*",
+      "assets/**/*",
+      "index.html",
+      "README.md",
+      "package.json"
+    ],
+    "mac": {
+      "category": "public.app-category.developer-tools",
+      "icon": "assets/icon.png",
+      "target": [
+        "dmg",
+        "zip"
+      ]
+    },
+    "win": {
+      "icon": "assets/icon.png",
+      "target": [
+        "nsis",
+        "portable"
+      ]
+    }
+  },
+  "dependencies": {
+    "slopmeter": "^0.5.1"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "electron": "^41.2.0",
+    "electron-builder": "^26.8.1"
+  }
+}

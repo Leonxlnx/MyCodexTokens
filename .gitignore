@@ -1,0 +1,10 @@
+node_modules/
+release/
+.app-stage/
+electron-smoke.err.log
+electron-smoke.out.log
+server.err.log
+server.log
+heatmap-last-year.png
+usage-last-year.json
+.codex/
