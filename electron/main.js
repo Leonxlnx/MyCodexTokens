@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain, shell } = require("electron");
 const { spawn } = require("node:child_process");
 const fs = require("node:fs/promises");
+const fsSync = require("node:fs");
 const path = require("node:path");
 const { pathToFileURL } = require("node:url");
 
@@ -33,11 +34,27 @@ function getOutputPaths() {
 }
 
 function getCliScriptPath() {
-  const packageRoot = app.isPackaged
-    ? path.join(process.resourcesPath, "app.asar.unpacked", "node_modules", "slopmeter")
-    : path.join(__dirname, "..", "node_modules", "slopmeter");
+  const searchRoots = app.isPackaged
+    ? [
+        path.join(process.resourcesPath, "app.asar.unpacked"),
+        path.join(process.resourcesPath, "app"),
+        process.resourcesPath,
+      ]
+    : [path.join(__dirname, "..")];
 
-  return path.join(packageRoot, "dist", "cli.js");
+  for (const root of searchRoots) {
+    const candidate = path.join(root, "node_modules", "slopmeter", "dist", "cli.js");
+
+    if (fsSync.existsSync(candidate)) {
+      return candidate;
+    }
+  }
+
+  throw new Error(
+    `Bundled slopmeter CLI not found. Checked: ${searchRoots
+      .map((root) => path.join(root, "node_modules", "slopmeter", "dist", "cli.js"))
+      .join(", ")}`
+  );
 }
 
 async function fileExists(targetPath) {
@@ -191,6 +208,14 @@ async function refreshSnapshot() {
   return toSnapshot(payload);
 }
 
+function getErrorMessage(error) {
+  if (error instanceof Error && error.message) {
+    return error.message;
+  }
+
+  return String(error);
+}
+
 function broadcast(channel, payload) {
   BrowserWindow.getAllWindows().forEach((window) => {
     if (!window.isDestroyed()) {
@@ -243,9 +268,14 @@ app.whenReady().then(() => {
   ipcMain.handle("slopmeter:get-latest-snapshot", async () => readExistingSnapshot());
 
   ipcMain.handle("slopmeter:refresh", async () => {
-    const snapshot = await refreshSnapshot();
-    broadcast("slopmeter:snapshot-updated", snapshot);
-    return snapshot;
+    try {
+      const snapshot = await refreshSnapshot();
+      broadcast("slopmeter:snapshot-updated", snapshot);
+      return snapshot;
+    } catch (error) {
+      console.error("[MyCodexTokens] refresh failed:", error);
+      throw new Error(getErrorMessage(error));
+    }
   });
 
   ipcMain.handle("slopmeter:open-image", async () => {

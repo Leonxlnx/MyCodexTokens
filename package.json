@@ -9,6 +9,7 @@
     "start": "electron .",
     "dev": "electron .",
     "prepare:stage": "node scripts/stage-app.js && npm --prefix .app-stage install --omit=dev --no-package-lock && node scripts/finalize-stage.js",
+    "package:win:local": "npm run prepare:stage && npx electron-packager .app-stage MyCodexTokens --platform=win32 --arch=x64 --out release-packager --overwrite --electron-version 41.2.0 --icon=assets/icon.ico --prune=false",
     "package": "npm run prepare:stage && cross-env NODE_OPTIONS=--max-old-space-size=8192 electron-builder -c.directories.app=.app-stage",
     "package:mac": "npm run prepare:stage && cross-env NODE_OPTIONS=--max-old-space-size=8192 electron-builder --mac dmg zip -c.directories.app=.app-stage",
     "package:win": "npm run prepare:stage && cross-env NODE_OPTIONS=--max-old-space-size=8192 electron-builder --win nsis portable -c.directories.app=.app-stage"
@@ -41,7 +42,7 @@
       ]
     },
     "win": {
-      "icon": "assets/icon.png",
+      "icon": "assets/icon.ico",
       "target": [
         "nsis",
         "portable"

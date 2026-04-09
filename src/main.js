@@ -71,7 +71,15 @@ function formatTimestamp(value) {
   return timeFormatter.format(new Date(value));
 }
 
-function setStatus(tone) {
+function getErrorMessage(error) {
+  if (error instanceof Error && error.message) {
+    return error.message;
+  }
+
+  return "Refresh failed";
+}
+
+function setStatus(tone, detail = "") {
   const labels = {
     idle: "Ready",
     loading: "Updating",
@@ -81,12 +89,16 @@ function setStatus(tone) {
 
   elements.statusBadge.dataset.state = tone;
   elements.statusBadge.textContent = labels[tone] ?? labels.idle;
+  elements.statusBadge.title = detail;
 }
 
 function setBusy(isBusy) {
   state.isRefreshing = isBusy;
+  document.body.dataset.refreshing = isBusy ? "true" : "false";
   elements.refreshButton.disabled = isBusy;
-  elements.refreshButton.textContent = isBusy ? "Refreshing..." : "Refresh";
+  elements.themeToggleButton.disabled = isBusy;
+  elements.autoRefreshSelect.disabled = isBusy;
+  elements.refreshButton.textContent = isBusy ? "Refreshing" : "Refresh";
 }
 
 function applyTheme(theme) {
@@ -107,10 +119,12 @@ function renderSnapshot(snapshot) {
   elements.providerValue.textContent = snapshot.provider.toUpperCase();
   elements.rangeValue.textContent = `${formatDate(snapshot.range.start)} to ${formatDate(snapshot.range.end)}`;
   elements.pathValue.textContent = snapshot.imagePath;
+  elements.pathValue.title = snapshot.imagePath;
   elements.modelValue.textContent = snapshot.insights.mostUsedModel;
   elements.streakValue.textContent = `${snapshot.insights.currentStreak} days`;
   elements.longestStreakValue.textContent = `${snapshot.insights.longestStreak} days`;
   elements.outputPathLabel.textContent = snapshot.imagePath;
+  elements.outputPathLabel.title = snapshot.imagePath;
   elements.updatedAtValue.textContent = formatTimestamp(snapshot.generatedAt);
 
   renderDay("today", snapshot.today);
@@ -126,7 +140,9 @@ function applyConfig(config) {
   state.config = config;
   elements.providerValue.textContent = config.provider.toUpperCase();
   elements.outputPathLabel.textContent = config.imagePath;
+  elements.outputPathLabel.title = config.imagePath;
   elements.pathValue.textContent = config.imagePath;
+  elements.pathValue.title = config.imagePath;
   elements.openImageButton.disabled = !config.imageExists;
 }
 
@@ -178,8 +194,9 @@ async function refreshSnapshot({ background = false } = {}) {
     };
     updateActionAvailability();
     setStatus("success");
-  } catch {
-    setStatus("error");
+  } catch (error) {
+    console.error("[MyCodexTokens] renderer refresh failed:", error);
+    setStatus("error", getErrorMessage(error));
   } finally {
     setBusy(false);
   }
