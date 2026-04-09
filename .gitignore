@@ -2,6 +2,10 @@ node_modules/
 release/
 .app-stage/
 release-packager/
+android-companion/.gradle/
+android-companion/build/
+android-companion/app/build/
+android-companion/local.properties
 electron-smoke.err.log
 electron-smoke.out.log
 electron-smoke-*.err.log
