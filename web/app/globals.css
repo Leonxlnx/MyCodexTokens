@@ -1,0 +1,303 @@
+:root {
+  color-scheme: dark;
+  --bg: #040507;
+  --panel: rgba(13, 19, 27, 0.56);
+  --panel-strong: rgba(10, 14, 20, 0.8);
+  --line: rgba(255, 255, 255, 0.14);
+  --text: #f4f7fb;
+  --muted: rgba(244, 247, 251, 0.74);
+  --accent: #99ffe8;
+  --shadow: 0 30px 120px rgba(0, 0, 0, 0.42);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100%;
+}
+
+body {
+  background:
+    radial-gradient(circle at top, rgba(113, 187, 255, 0.18), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(103, 255, 206, 0.12), transparent 26%),
+    #040507;
+  color: var(--text);
+  font-family: var(--font-body), Arial, sans-serif;
+}
+
+button,
+input,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+p,
+h1 {
+  margin: 0;
+}
+
+.panorama-shell {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #040507;
+}
+
+.panorama-stage {
+  position: absolute;
+  inset: 0;
+  cursor: grab;
+}
+
+.panorama-stage:active {
+  cursor: grabbing;
+}
+
+.panorama-stage canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.panorama-vignette {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    linear-gradient(180deg, rgba(3, 5, 9, 0.8) 0%, rgba(3, 5, 9, 0.08) 22%, rgba(3, 5, 9, 0.12) 68%, rgba(3, 5, 9, 0.82) 100%),
+    radial-gradient(circle at 82% 18%, rgba(153, 255, 232, 0.22), transparent 20%),
+    radial-gradient(circle at 18% 22%, rgba(141, 174, 255, 0.18), transparent 24%);
+}
+
+.world-switcher {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  z-index: 2;
+  width: min(22rem, calc(100% - 2rem));
+}
+
+.world-switcher-list {
+  display: grid;
+  gap: 0.6rem;
+}
+
+.upload-toolbar {
+  display: flex;
+  justify-content: flex-start;
+  margin-bottom: 0.7rem;
+}
+
+.upload-button {
+  width: 100%;
+  padding: 0.72rem 1rem;
+  border-radius: 1rem;
+  border: 1px solid rgba(153, 255, 232, 0.45);
+  background: rgba(11, 20, 24, 0.85);
+  color: var(--text);
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+  font-family: var(--font-body), Arial, sans-serif;
+}
+
+.upload-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(153, 255, 232, 0.82);
+  background: rgba(14, 25, 31, 0.94);
+}
+
+.upload-input:focus-visible + .upload-button,
+.upload-input:hover + .upload-button {
+  outline: 2px solid rgba(153, 255, 232, 0.8);
+  outline-offset: 2px;
+}
+
+.world-switcher-item {
+  display: flex;
+  width: 100%;
+  padding: 0.55rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1.15rem;
+  background: rgba(8, 14, 18, 0.62);
+  color: var(--text);
+  cursor: pointer;
+  text-align: left;
+  backdrop-filter: blur(18px);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.world-switcher-item:hover {
+  transform: translateX(2px);
+  border-color: rgba(255, 255, 255, 0.22);
+  background: rgba(11, 18, 24, 0.76);
+}
+
+.world-switcher-item.is-active {
+  border-color: rgba(153, 255, 232, 0.75);
+  background: rgba(11, 20, 24, 0.86);
+  box-shadow: 0 18px 48px rgba(0, 0, 0, 0.22);
+}
+
+.world-switcher-thumb {
+  display: block;
+  min-height: 4rem;
+  width: 100%;
+  border-radius: 0.9rem;
+  background-position: center;
+  background-size: cover;
+}
+
+.panorama-copy {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  z-index: 1;
+  display: grid;
+  gap: 1rem;
+  width: min(30rem, calc(100% - 3rem));
+  padding: 2rem 1.5rem 2.5rem;
+  pointer-events: none;
+}
+
+.panorama-actions {
+  display: flex;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.panorama-button {
+  appearance: none;
+  border: 1px solid rgba(153, 255, 232, 0.45);
+  background: rgba(6, 13, 16, 0.58);
+  border-radius: 50%;
+  width: 0.88rem;
+  height: 0.88rem;
+  padding: 0;
+  cursor: pointer;
+  backdrop-filter: blur(20px);
+  box-shadow: var(--shadow);
+  transition:
+    transform 180ms ease,
+    border-color 180ms ease,
+    background-color 180ms ease;
+}
+
+.panorama-button:hover {
+  transform: translateY(-1px);
+  border-color: rgba(153, 255, 232, 0.8);
+  background: rgba(11, 21, 24, 0.72);
+}
+
+.panorama-button-secondary {
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.panorama-status {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  padding: 1.5rem;
+  background: rgba(4, 5, 7, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.panorama-status-panel {
+  width: min(28rem, 100%);
+  padding: 1.4rem;
+  border: 1px solid var(--line);
+  border-radius: 1.5rem;
+  background: var(--panel-strong);
+  box-shadow: var(--shadow);
+  display: grid;
+  place-items: center;
+  gap: 1rem;
+}
+
+.panorama-status-copy {
+  margin-top: 0.6rem;
+  color: transparent;
+}
+
+.panorama-spinner {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  border-top-color: var(--accent);
+  animation: panorama-spin 0.8s linear infinite;
+}
+
+@keyframes panorama-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.sr-only {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+@media (max-width: 720px) {
+  .world-switcher {
+    top: auto;
+    bottom: 1rem;
+    width: calc(100% - 2rem);
+  }
+
+  .world-switcher-list {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(14rem, 1fr);
+    overflow-x: auto;
+    padding-bottom: 0.25rem;
+    scrollbar-width: none;
+  }
+
+  .world-switcher-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .panorama-copy {
+    width: min(100%, calc(100% - 2rem));
+    padding: 1.25rem 1rem 6rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
